@@ -1,0 +1,11 @@
+services:
+  contenedor-vulnerable:
+    build: .
+    image: servicios-vulnerables:latest
+    container_name: servidor_vulnerable
+    ports:
+      - "8081:80"                 # HTTP Vulnerable (Apache 2.4.18 + RCE + Directory Listing)
+      - "2121:21"                 # FTP Vulnerable  (vsftpd 3.0.3 - 2016 + Anonimo con escritura)
+      - "21100-21105:21100-21105" # Puertos pasivos FTP
+      - "1139:139"                # NetBIOS Vulnerable
+      - "1445:445"                # SMB Vulnerable  (Samba 4.3.11 + SMBv1 + Acceso Root Anonimo)
